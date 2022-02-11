@@ -1,0 +1,7 @@
+{
+  "name": "ProjetTag",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
