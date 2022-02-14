@@ -1,3 +1,17 @@
-<ion-content>
+  <ion-content>
+    <ion-list>
+        <ion-item  lines="full" *ngFor = "let a of dataArret">
+            <ion-card id="{{a.id}}">
+                <p>
+                    {{a.properties.LIBELLE}}
+                    <br>
+                    {{a.geometry.coordinates}}
 
-</ion-content>
+                </p>
+
+
+            </ion-card>
+        </ion-item>
+    </ion-list>
+  
+  </ion-content>

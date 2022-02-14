@@ -1,9 +1,7 @@
 <ion-content>
     <ion-list>
-
-
         <ion-item  lines="full" *ngFor = "let l of dataLigne">
-            <ion-card [ngStyle]="{'background-color':'green'}" onCl>
+            <ion-card id="{{l.id}}"  [ngStyle]="{'background-color':'blue', 'color':'black'}" (click) = "iniModal()">
                 <p>
                     {{l.shortName}}
                     <br>
@@ -17,5 +15,7 @@
             </ion-card>
         </ion-item>
     </ion-list>
+
+  
 
 </ion-content>

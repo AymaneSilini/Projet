@@ -2,6 +2,9 @@
   
   <ion-searchbar  [(ngModel)]="search" (ionChange)="research()" ></ion-searchbar>
 
+  <ion-toggle [(ngModel)]="toogleval" (ionChange)="tooglechanged()"></ion-toggle>
+
+
   <div id="mapId" style="width: 100%; height: 100%"></div>
 
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-itineraire',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./itineraire.page.scss'],
 })
 export class ItinerairePage implements OnInit {
+  dataArret = [];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private api:ApiService,) { 
   }
 
+  ngOnInit() {
+    this.api.getDetailLigne().subscribe(data=>{
+      this.dataArret = data["features"];
+      console.log(this.dataArret);
+    })
+  }
+  
 }

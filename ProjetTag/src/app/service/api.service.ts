@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   url:string = "https://data.mobilites-m.fr/api/routers/default/index/routes";
-
+  urlDetail:string = "https://data.mobilites-m.fr/api/bbox/json?types=arret";
   constructor(private http: HttpClient) { }
 
-  public getData():Observable <any>{
+  public getLigne():Observable <any>{
     return this.http.get(this.url);
   }
 
+  public getDetailLigne():Observable <any>{
+    return this.http.get(this.urlDetail);
+  }
+ 
 }
