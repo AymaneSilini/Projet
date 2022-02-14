@@ -1,14 +1,9 @@
 <ion-content>
   
-  <ion-searchbar [(ngModel)]="search" (ionChange)="research()" showCancelButton="always"></ion-searchbar>
-  
-  <ion-list *ngIf="isItemAvailable">
-    <ion-item *ngFor="let item of items">{{ item }}</ion-item>
-  </ion-list>
-
-
-  <ion-toggle [(ngModel)]="toogleval" (ionChange)="tooglechanged()"></ion-toggle>
-
+<ion-toolbar>
+  <ion-searchbar [(ngModel)]="search" (ionChange)="research()" showCancelButton="always" slot="start"></ion-searchbar>
+  <ion-toggle [(ngModel)]="toogleval" (ionChange)="tooglechanged()" slot="end"></ion-toggle>
+</ion-toolbar>
 
   <div id="mapId" style="width: 100%; height: 100%"></div>
 

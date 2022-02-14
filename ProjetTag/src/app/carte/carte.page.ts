@@ -57,7 +57,9 @@ export class CartePage implements OnInit {
     
         for (let k=0;k<=this.dataArret.length;k++){
            //console.log(this.dataArret[k]["properties"]["LIBELLE"]);
+           if (this.dataArret[k]["properties"]["COMMUNE"] == "GRENOBLE"){
            Leaflet.marker([this.dataArret[k]["geometry"]["coordinates"][1], this.dataArret[k]["geometry"]["coordinates"][0]],{icon:iconbus}).addTo(this.map).bindPopup(this.dataArret[k]["properties"]["LIBELLE"]);
+           }
       }
 
 
