@@ -1,3 +1,21 @@
 <ion-content>
+    <ion-list>
+
+
+        <ion-item  lines="full" *ngFor = "let l of dataLigne">
+            <ion-card [ngStyle]="{'background-color':'green'}" onCl>
+                <p>
+                    {{l.shortName}}
+                    <br>
+                    {{l.color}}
+                    <br>
+                    {{l.longName}}
+                    <br>
+                    {{l.mode}}
+                    <br>
+                </p>
+            </ion-card>
+        </ion-item>
+    </ion-list>
 
 </ion-content>
