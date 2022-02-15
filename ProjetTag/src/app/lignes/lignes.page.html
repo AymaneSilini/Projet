@@ -1,21 +1,61 @@
-<ion-content>
-    <ion-list>
-        <ion-item  lines="full" *ngFor = "let l of dataLigne">
-            <ion-card id="{{l.id}}"  [ngStyle]="{'background-color':'blue', 'color':'black'}" (click) = "iniModal()">
-                <p>
-                    {{l.shortName}}
-                    <br>
-                    {{l.color}}
-                    <br>
-                    {{l.longName}}
-                    <br>
-                    {{l.mode}}
-                    <br>
-                </p>
-            </ion-card>
-        </ion-item>
-    </ion-list>
+<ion-content>      
+    <ion-label>Tram</ion-label>
+    <br>
+        <ion-toolbar>       
+        <ion-buttons slot="start"  *ngFor = "let t of ligneTram">
+            <ion-button id="{{t.id}}" [ngStyle]="{'background-color':'#'+t.color, 'color':'white'}" (click) = "iniModal()">
+                    {{t.shortName}}
+            </ion-button>
+        </ion-buttons>
+        </ion-toolbar>
 
-  
 
+        <br>
+        <ion-label>Relais</ion-label>
+        <br>
+
+        <ion-toolbar>
+        <ion-buttons slot="start" *ngFor = "let r of ligneRelais">
+            <ion-button id="{{r.id}}"  [ngStyle]="{'background-color':'#'+r.color, 'color':'white'}" (click) = "iniModal()">
+                    {{r.shortName}}
+            </ion-button>
+        </ion-buttons>
+        </ion-toolbar>
+
+        <br>
+        <ion-label>Chrono</ion-label>
+        <br>
+
+        <ion-toolbar>
+            <ion-buttons slot="start" *ngFor ="let c of ligneChrono">
+            <ion-button id="{{c.id}}" [ngStyle]="{'background-color':'#'+c.color,  'color':'white'}" (click) = "iniModal()">
+                    {{c.shortName}}
+                </ion-button>
+            </ion-buttons>
+            </ion-toolbar>
+        
+            <br>
+            <ion-label>Proximo</ion-label>
+            <br>
+
+            <ion-toolbar>
+            <ion-buttons slot="start" *ngFor = "let p of ligneProximo">
+            <ion-button id="{{p.id}}"  [ngStyle]="{'background-color':'#'+p.color, 'color':'white'}" (click) = "iniModal()">
+                    {{p.shortName}}
+            </ion-button>
+        </ion-buttons>
+        </ion-toolbar>
+
+        <br>
+        <ion-label>Flexo</ion-label>
+        <br>
+
+        <ion-toolbar>
+            <ion-buttons slot="start" *ngFor = "let f of ligneFlexo">
+            <ion-button id="{{f.id}}"  [ngStyle]="{'background-color': '#'+f.color, 'color':'white'}" (click) = "iniModal()">
+                    {{f.shortName}}
+            </ion-button>
+        </ion-buttons>
+        </ion-toolbar>
+        
 </ion-content>

@@ -55,12 +55,15 @@ export class CartePage implements OnInit {
         });
     
     
-        for (let k=0;k<=this.dataArret.length;k++){
+        for (let k=0;k<this.dataArret.length;k++){
            //console.log(this.dataArret[k]["properties"]["LIBELLE"]);
            if (this.dataArret[k]["properties"]["COMMUNE"] == "GRENOBLE"){
            Leaflet.marker([this.dataArret[k]["geometry"]["coordinates"][1], this.dataArret[k]["geometry"]["coordinates"][0]],{icon:iconbus}).addTo(this.map).bindPopup(this.dataArret[k]["properties"]["LIBELLE"]);
            }
       }
+
+
+      // VOIR POUR LE SENS DES BUS ET TRAMS
 
 
     Leaflet.polyline([[45.194830, 5.705783], [45.15501292247387, 5.728423435722278]],
