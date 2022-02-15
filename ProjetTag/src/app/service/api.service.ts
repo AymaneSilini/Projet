@@ -14,13 +14,18 @@ export class ApiService {
   urlTramC:string ="https://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_C"
   urlTramD:string ="https://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_D"
   urlTramE:string ="https://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_E"
+  urlInfo: string = "https://data.mobilites-m.fr/api/ficheHoraires/json?route=SEM:";
+ 
 
-  constructor(private http: HttpClient) { }
+  ligne:string;
+
+
+  constructor(private http: HttpClient) { 
+  }
 
   public getLigne():Observable <any>{
     return this.http.get(this.url);
   }
-
   public getDetailLigne():Observable <any>{
     return this.http.get(this.urlDetail);
   }
@@ -39,6 +44,11 @@ export class ApiService {
   public getTramE():Observable <any>{
     return this.http.get(this.urlTramE);
   }
+
+  public getInfo():Observable <any>{
+    return this.http.get(this.urlInfo);
+  }
+
 
  
 }

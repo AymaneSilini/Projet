@@ -8,7 +8,7 @@
         
         <ion-toolbar>       
         <ion-buttons slot="start"  *ngFor = "let t of ligneTram">
-            <ion-button id="{{t.id}}" class = "round" [ngStyle]="{'background-color':'#'+t.color}" (click) = "iniModal()">
+            <ion-button id="{{t.shortName}}" class = "round" [ngStyle]="{'background-color':'#'+t.color}" (click) = "iniModal($event)">
                     {{t.shortName}}
             </ion-button>
         </ion-buttons>
@@ -23,7 +23,7 @@
 
         <ion-toolbar>
         <ion-buttons slot="start" *ngFor = "let r of ligneRelais">
-            <ion-button id="{{r.id}}"  class = "round" [ngStyle]="{'background-color':'#'+r.color}" (click) = "iniModal()">
+            <ion-button id="{{r.shortName}}"  class = "round" [ngStyle]="{'background-color':'#'+r.color}" (click) = "iniModal($event)">
                     {{r.shortName}}
             </ion-button>
         </ion-buttons>
@@ -39,7 +39,7 @@
 
         <ion-toolbar>
             <ion-buttons slot="start" *ngFor ="let c of ligneChrono">
-            <ion-button id="{{c.id}}" class = "round" [ngStyle]="{'background-color':'#'+c.color}" (click) = "iniModal()">
+            <ion-button id="{{c.shortName}}" class = "round" [ngStyle]="{'background-color':'#'+c.color}" (click) = "iniModal($event)">
                     {{c.shortName}}
                 </ion-button>
             </ion-buttons>
@@ -56,7 +56,7 @@
 
             <ion-toolbar>
             <ion-buttons slot="start" *ngFor = "let p of ligneProximo">
-            <ion-button id="{{p.id}}" class = "square" [ngStyle]="{'background-color':'#'+p.color}" (click) = "iniModal()">
+            <ion-button id="{{p.shortName}}" class = "square" [ngStyle]="{'background-color':'#'+p.color}" (click) = "iniModal($event)">
                     {{p.shortName}}
             </ion-button>
         </ion-buttons>
@@ -71,7 +71,7 @@
 
         <ion-toolbar>
             <ion-buttons slot="start" *ngFor = "let f of ligneFlexo">
-            <ion-button id="{{f.id}}" class = "square"  [ngStyle]="{'background-color': '#'+f.color}" (click) = "iniModal()">
+            <ion-button id="{{f.shortName}}" class = "square"  [ngStyle]="{'background-color': '#'+f.color}" (click) = "iniModal($event)">
                     {{f.shortName}}
             </ion-button>
         </ion-buttons>

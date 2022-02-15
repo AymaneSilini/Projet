@@ -2,8 +2,11 @@
 
 <ion-content>
   <ion-button (click)="close()">Ligne</ion-button>
-
-
-
-  //lister tous les arrets en cliquant sur un bus dans lignes
+  <ion-list>
+        <ion-item slot="start" *ngFor = "let A of arretTram">
+                {{A.stopName}}
+                <br>
+                {{A.trips}}
+    </ion-item>
+  </ion-list>
 </ion-content>
