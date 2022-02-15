@@ -95,6 +95,10 @@ export class CartePage implements OnInit {
       iconUrl: '/assets/bus.png',
       iconSize: [40, 40]
       }); 
+    var  iconUser = Leaflet.icon({
+        iconUrl: '/assets/user.gif',
+        iconSize: [40, 40]
+        });
 
         for (let k=0;k<this.dataArret.length;k++){
            //console.log(this.dataArret[k]["properties"]["LIBELLE"]);
@@ -105,6 +109,9 @@ export class CartePage implements OnInit {
            Leaflet.marker([this.dataArret[k]["geometry"]["coordinates"][1], this.dataArret[k]["geometry"]["coordinates"][0]],{icon:iconbus}).addTo(this.map).bindPopup(this.dataArret[k]["properties"]["LIBELLE"]);
            }
       }
+
+      Leaflet.marker([this.latitudePosition, this.longitudePosition],{icon:iconUser}).addTo(this.map);
+
 
       //pour inverser la latitude et la longitude de A
       for (let k=0;k<this.trajetTramA.length;k++){
