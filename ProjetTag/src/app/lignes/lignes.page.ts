@@ -22,6 +22,7 @@ export class LignesPage implements OnInit {
   }
 
   ngOnInit() {
+    //recupere les infos de toute les lignes
     this.api.getLigne().subscribe(data=>{
       this.dataLigne = data;
     
@@ -45,6 +46,7 @@ export class LignesPage implements OnInit {
     
       }
     });
+
     }
   
   
@@ -54,13 +56,14 @@ export class LignesPage implements OnInit {
     console.log("click");
   }
 
-  async iniModal(){
+  async iniModal($event){
     const modal = await this.modalCtrl.create({
       component:HorairePage,
     });
   
 
-  
+    this.api.ligne = $event.target.id;
+    console.log(this.api.ligne);
   return await modal.present();
 }
 
@@ -68,3 +71,7 @@ export class LignesPage implements OnInit {
 
 
 }
+
+
+/// recuperer le shortname et le passer en parametre de l'url urlInfoA pour avoir les infos de chaque
+/// bus ou tram 

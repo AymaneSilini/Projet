@@ -2,5 +2,11 @@
 
 <ion-content>
   <ion-button (click)="close()">Ligne</ion-button>
-
+  <ion-list>
+        <ion-item slot="start" *ngFor = "let A of arretTram">
+                {{A.stopName}}
+                <br>
+                {{A.trips}}
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,61 +1,81 @@
-<ion-content>      
+<ion-content>   
+    
+    <ion-card>
     <ion-label>Tram</ion-label>
     <br>
+    <ion-label>4h30 à 1h</ion-label>
+    <br>
+        
         <ion-toolbar>       
         <ion-buttons slot="start"  *ngFor = "let t of ligneTram">
-            <ion-button id="{{t.id}}" [ngStyle]="{'background-color':'#'+t.color, 'color':'white'}" (click) = "iniModal()">
+            <ion-button id="{{t.shortName}}" class = "round" [ngStyle]="{'background-color':'#'+t.color}" (click) = "iniModal($event)">
                     {{t.shortName}}
             </ion-button>
         </ion-buttons>
         </ion-toolbar>
-
-
+    </ion-card>
+     
+    <ion-card>
+        <ion-label>Navette Relais</ion-label>
         <br>
-        <ion-label>Relais</ion-label>
+        <ion-label>4h30 à 1h</ion-label>
         <br>
 
         <ion-toolbar>
         <ion-buttons slot="start" *ngFor = "let r of ligneRelais">
-            <ion-button id="{{r.id}}"  [ngStyle]="{'background-color':'#'+r.color, 'color':'white'}" (click) = "iniModal()">
+            <ion-button id="{{r.shortName}}"  class = "round" [ngStyle]="{'background-color':'#'+r.color}" (click) = "iniModal($event)">
                     {{r.shortName}}
             </ion-button>
         </ion-buttons>
         </ion-toolbar>
+    </ion-card>
 
-        <br>
+
+    <ion-card>
         <ion-label>Chrono</ion-label>
+        <br>
+        <ion-label>5h à 1h</ion-label>
         <br>
 
         <ion-toolbar>
             <ion-buttons slot="start" *ngFor ="let c of ligneChrono">
-            <ion-button id="{{c.id}}" [ngStyle]="{'background-color':'#'+c.color,  'color':'white'}" (click) = "iniModal()">
+            <ion-button id="{{c.shortName}}" class = "round" [ngStyle]="{'background-color':'#'+c.color}" (click) = "iniModal($event)">
                     {{c.shortName}}
                 </ion-button>
             </ion-buttons>
             </ion-toolbar>
-        
-            <br>
+        </ion-card>
+
+
+    <ion-card>
             <ion-label>Proximo</ion-label>
             <br>
+            <ion-label>5h à 21h</ion-label>
+            <br>
+
 
             <ion-toolbar>
             <ion-buttons slot="start" *ngFor = "let p of ligneProximo">
-            <ion-button id="{{p.id}}"  [ngStyle]="{'background-color':'#'+p.color, 'color':'white'}" (click) = "iniModal()">
+            <ion-button id="{{p.shortName}}" class = "square" [ngStyle]="{'background-color':'#'+p.color}" (click) = "iniModal($event)">
                     {{p.shortName}}
             </ion-button>
         </ion-buttons>
         </ion-toolbar>
+    </ion-card>
 
-        <br>
+    <ion-card>
         <ion-label>Flexo</ion-label>
+        <br>
+        <ion-label>6h30 à 20h</ion-label>
         <br>
 
         <ion-toolbar>
             <ion-buttons slot="start" *ngFor = "let f of ligneFlexo">
-            <ion-button id="{{f.id}}"  [ngStyle]="{'background-color': '#'+f.color, 'color':'white'}" (click) = "iniModal()">
+            <ion-button id="{{f.shortName}}" class = "square"  [ngStyle]="{'background-color': '#'+f.color}" (click) = "iniModal($event)">
                     {{f.shortName}}
             </ion-button>
         </ion-buttons>
         </ion-toolbar>
-        
+    </ion-card>
+    
 </ion-content>
