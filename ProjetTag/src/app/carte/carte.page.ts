@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Leaflet from 'leaflet';
 import { ApiService } from '../service/api.service';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-carte',
@@ -26,11 +27,11 @@ export class CartePage implements OnInit {
   infoTramC = [];
   infoTramD = [];
   infoTramE = [];
-
-
+  latitudePosition; //latitude
+  longitudePosition; //longitude
   long:string;
   lat:string;
-  constructor(private api:ApiService) { 
+  constructor(private api:ApiService, private geolocation: Geolocation) { 
     this.darkmap = 'https://data.mobilites-m.fr/carte/{z}/{x}/{y}.png';
     this.clearmap = 'https://data.mobilites-m.fr/carte-dark/{z}/{x}/{y}.png'
 
@@ -63,6 +64,19 @@ export class CartePage implements OnInit {
     this.api.getTramE().subscribe(data=>{
       this.trajetTramE = data["features"][0]["geometry"]["coordinates"][0];
     })
+
+    this.getCurrentCoordinates();
+
+
+  }
+
+  async getCurrentCoordinates() {
+    await this.geolocation.getCurrentPosition().then((resp) => {
+      this.latitudePosition = resp.coords.latitude;
+      this.longitudePosition = resp.coords.longitude;
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
   }
 
   research(){
@@ -175,6 +189,7 @@ export class CartePage implements OnInit {
       }).addTo(this.map);
     
   }
+
 
 
 
