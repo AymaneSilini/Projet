@@ -17,6 +17,13 @@ export class CartePage implements OnInit {
   colormap:string;
   private toogleval: boolean;
   dataArret = [];
+  tramA = [];
+  tramB = [];
+  tramC = [];
+  tramD = [];
+  tramE = [];
+  long:string;
+  lat:string;
   constructor(private api:ApiService) { 
     this.darkmap = 'https://data.mobilites-m.fr/carte/{z}/{x}/{y}.png';
     this.clearmap = 'https://data.mobilites-m.fr/carte-dark/{z}/{x}/{y}.png'
@@ -28,10 +35,29 @@ export class CartePage implements OnInit {
       this.dataArret = data["features"];
     })
 
+    this.api.getTramA().subscribe(data=>{
+      //recherche directement le tableau de coordonnées
+      this.tramA = data["features"][0]["geometry"]["coordinates"][0];
+    })
+
+    this.api.getTramB().subscribe(data=>{
+      this.tramB = data["features"][0]["geometry"]["coordinates"][0];
+    })
+
+    this.api.getTramC().subscribe(data=>{
+      this.tramC = data["features"][0]["geometry"]["coordinates"][0];
+    })
+
+    this.api.getTramD().subscribe(data=>{
+      this.tramD = data["features"][0]["geometry"]["coordinates"][0];
+    })
+
+    this.api.getTramE().subscribe(data=>{
+      this.tramE = data["features"][0]["geometry"]["coordinates"][0];
+    })
+
+
   }
-  
-
-
 
   research(){
     console.log(this.search);
@@ -48,13 +74,8 @@ export class CartePage implements OnInit {
     var iconbus = Leaflet.icon({
       iconUrl: '/assets/bus.png',
       iconSize: [40, 40]
-      });
-   var icontram = Leaflet.icon({
-        iconUrl: '/assets/tram.png',
-        iconSize: [40, 40]
-        });
-    
-    
+      }); 
+
         for (let k=0;k<this.dataArret.length;k++){
            //console.log(this.dataArret[k]["properties"]["LIBELLE"]);
            if (this.dataArret[k]["properties"]["COMMUNE"] == "GRENOBLE"){
@@ -62,12 +83,66 @@ export class CartePage implements OnInit {
            }
       }
 
+      //pour inverser la latitude et la longitude de A
+      for (let k=0;k<this.tramA.length;k++){
+        this.long = this.tramA[k][1] 
+        this.lat = this.tramA[k][0]
+        this.tramA[k][0] = this.long;
+        this.tramA[k][1] = this.lat;
+        }
 
-      // VOIR POUR LE SENS DES BUS ET TRAMS
+      //pour inverser la latitude et la longitude de B
+      for (let k=0;k<this.tramB.length;k++){
+        this.long = this.tramB[k][1] 
+        this.lat = this.tramB[k][0]
+        this.tramB[k][0] = this.long;
+        this.tramB[k][1] = this.lat;
+        }
+      
+       //pour inverser la latitude et la longitude de C
+       for (let k=0;k<this.tramC.length;k++){
+        this.long = this.tramC[k][1] 
+        this.lat = this.tramC[k][0]
+        this.tramC[k][0] = this.long;
+        this.tramC[k][1] = this.lat;
+        }
+
+        //pour inverser la latitude et la longitude de D
+        for (let k=0;k<this.tramD.length;k++){
+        this.long = this.tramD[k][1] 
+        this.lat = this.tramD[k][0]
+        this.tramD[k][0] = this.long;
+        this.tramD[k][1] = this.lat;
+        }
+
+        //pour inverser la latitude et la longitude de E
+        for (let k=0;k<this.tramE.length;k++){
+        this.long = this.tramE[k][1] 
+        this.lat = this.tramE[k][0]
+        this.tramE[k][0] = this.long;
+        this.tramE[k][1] = this.lat;
+        }
 
 
-    Leaflet.polyline([[45.194830, 5.705783], [45.15501292247387, 5.728423435722278]],
-      {color: '#FF0000', weight: 5, opacity: 0.6 })
+
+    Leaflet.polyline([this.tramA],
+      {color: 'rgb(51,118,184)', weight: 8})
+      .addTo(this.map);
+
+    Leaflet.polyline([this.tramB],
+      {color: 'rgb(71,154,69)', weight: 8})
+      .addTo(this.map);
+
+    Leaflet.polyline([this.tramC],
+      {color: 'rgb(194,0,120)', weight: 8})
+      .addTo(this.map);
+
+    Leaflet.polyline([this.tramD],
+      {color: 'rgb(222,153,23)', weight: 8})
+      .addTo(this.map);
+
+    Leaflet.polyline([this.tramE],
+      {color: 'rgb(83,55,134)', weight: 8})
       .addTo(this.map);
   }
 
