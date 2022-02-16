@@ -6,27 +6,20 @@
   
   <ion-card>
     <ion-card-header [ngStyle]="{'background-color':this.api.color}">
-      <ion-card-title color = {{this.colorText}} >
+      <ion-card-title [ngStyle]="{'color':colorText}" >
         <ion-row>{{this.api.ligne}}</ion-row> 
         <ion-row>{{this.depart}} 
         <br>  {{this.arrivee}}</ion-row> 
-      </ion-card-title>
-
-      <ion-button (click) = "show()">
-      </ion-button>
-     
+      </ion-card-title>     
     </ion-card-header>
 
     <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
   <ion-list>
-        <ion-item slot="start" *ngFor = "let A of arret | arretFiltre:search">
+        <ion-item  id = "{{A.trips}}" slot="start" *ngFor = "let A of arret | arretFiltre:search" (click) = "getHoraire($event)">
                 {{A.parentStation.name}}
                 <br>
                 {{A.parentStation.city}}
-
-                <br>
-              {{A.trips}}
-    </ion-item>
+        </ion-item>
   </ion-list>
 </ion-card>
 </ion-content>

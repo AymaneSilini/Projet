@@ -1,4 +1,4 @@
-<ion-content fullscreen="true">   
+<ion-content >   
 
     <ion-title class="ion-text-center">Lignes du réseau</ion-title>
     
@@ -39,7 +39,7 @@
         <br>
         <ion-toolbar>
             <ion-buttons slot="start" *ngFor ="let c of ligneChrono">
-            <ion-button id="{{c.shortName}}" class = "round" [ngStyle]="{'background-color':'#'+c.color}" color = "dark" (click) = "iniModal($event)">
+            <ion-button id="{{c.shortName}}" class = "round" [ngStyle]="{'background-color':'#'+c.color, 'color' : 'black'}" (click) = "iniModal($event)">
                     {{c.shortName}}
                 </ion-button>
             </ion-buttons>
@@ -68,8 +68,8 @@
         <ion-label>6h30 à 20h</ion-label>
         <br>
 
-        <ion-toolbar>
-            <ion-buttons slot="start" *ngFor = "let f of ligneFlexo">
+        <ion-toolbar >
+            <ion-buttons slot="start" *ngFor = "let f of ligneFlexo" collapse = "false">
             <ion-button id="{{f.shortName}}" class = "square"  [ngStyle]="{'background-color': '#'+f.color}" (click) = "iniModal($event)">
                     {{f.shortName}}
             </ion-button>
