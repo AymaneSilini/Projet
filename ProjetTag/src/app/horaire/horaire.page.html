@@ -5,11 +5,15 @@
   <ion-button (click)="close()">
     <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
   </ion-button>
+  <ion-item></ion-item>
+  <ion-card>
+    <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
   <ion-list>
-        <ion-item slot="start" *ngFor = "let A of arretTram">
+        <ion-item slot="start" *ngFor = "let A of arret | arretFiltre:search">
                 {{A.stopName}}
                 <br>
                 {{A.trips}}
     </ion-item>
   </ion-list>
+</ion-card>
 </ion-content>
