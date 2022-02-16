@@ -3,8 +3,6 @@ import { ApiService } from '../service/api.service';
 import { ModalController } from '@ionic/angular';
 import { HorairePage } from '../horaire/horaire.page';
 
-
-
 @Component({
   selector: 'app-lignes',
   templateUrl: './lignes.page.html',

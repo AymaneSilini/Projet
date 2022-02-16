@@ -13,7 +13,7 @@ import { FavorisPage } from './favoris.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    FavorisPageRoutingModule
+    FavorisPageRoutingModule,
   ],
   declarations: [FavorisPage]
 })
