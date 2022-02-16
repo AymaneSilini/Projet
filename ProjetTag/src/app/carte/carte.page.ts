@@ -36,8 +36,8 @@ export class CartePage implements OnInit {
   lat:string;
 
   constructor(private api:ApiService, private geolocation: Geolocation) { 
-    this.darkmap = 'https://data.mobilites-m.fr/carte/{z}/{x}/{y}.png';
-    this.clearmap = 'https://data.mobilites-m.fr/carte-dark/{z}/{x}/{y}.png'
+    this.clearmap = 'https://data.mobilites-m.fr/carte/{z}/{x}/{y}.png';
+    this.darkmap = 'https://data.mobilites-m.fr/carte-dark/{z}/{x}/{y}.png'
 
   }
 
@@ -209,12 +209,15 @@ export class CartePage implements OnInit {
       Leaflet.tileLayer(this.darkmap, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
+      document.body.setAttribute('class','dark');
+
   
     }
     else if(this.toogleval ==false){
       Leaflet.tileLayer(this.clearmap, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
+      document.body.setAttribute('class','light');
     
   }
 }

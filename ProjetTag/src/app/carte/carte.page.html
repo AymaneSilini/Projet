@@ -2,6 +2,7 @@
 <ion-fab horizontal="end" style="width: 90%; padding-top: 2%" slot="fixed">
 <ion-toolbar>
   <ion-searchbar [(ngModel)]="search" (ionChange)="research()" slot="start"></ion-searchbar>
+  <ion-icon slot="start" name="moon"></ion-icon>
   <ion-toggle color="dark" [(ngModel)]="toogleval" (ionChange)="tooglechanged()" slot="end"></ion-toggle>
 </ion-toolbar>
 </ion-fab>

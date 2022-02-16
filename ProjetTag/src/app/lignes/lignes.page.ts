@@ -47,11 +47,8 @@ export class LignesPage implements OnInit {
       }
     });
 
+
     }
-  
-  
-
-
 
   async iniModal($event){
     const modal = await this.modalCtrl.create({
@@ -62,10 +59,6 @@ export class LignesPage implements OnInit {
     this.api.ligne = $event.target.id;
     return await modal.present();
 }
-
-
-
-
 }
 
 

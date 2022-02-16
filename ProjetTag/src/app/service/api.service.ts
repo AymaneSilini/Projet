@@ -16,7 +16,7 @@ export class ApiService {
   urlTramE:string ="https://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_E"
   urlInfo: string = "https://data.mobilites-m.fr/api/ficheHoraires/json?route=SEM:";
  
-
+  color:string;
   ligne:string;
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { element } from 'protractor';
 import { ApiService } from '../service/api.service';
 import { Arret } from '../service/arret';
 import { ArretFiltrePipe } from '../service/arret-filtre.pipe';
@@ -14,22 +15,38 @@ export class HorairePage implements OnInit {
   arret : Arret[] = [];
   urlBase:string;
   search: String = "";
-  color:String = "";
   depart:string = "";
   arrivee:string = "";
-
+  lenght:number;
+  ligne = [];
+  colorText:string;
 
   constructor(private modalCtrl: ModalController, private api:ApiService) {
     this.urlBase = this.api.urlInfo;
-    console.log(this.arret);
-
+    this.lenght = 0;
    }
 
   ngOnInit() {
     this.api.urlInfo = this.api.urlInfo + this.api.ligne;
     this.api.getInfo().subscribe(data=>{
       this.arret= data[0]["arrets"];
+      this.depart = data[0]["arrets"][0]["stopName"];
+      this.arrivee = data[1]["arrets"][0]["stopName"];
     })
+
+    this.api.getLigne().subscribe(data=>{
+      this.ligne= data;
+      var found = this.ligne.find(element => element["shortName"] == this.api.ligne);
+      this.api.color = "#" + found["color"];
+      if (this.api.ligne.includes('C')){
+        this.colorText = "dark";
+      }
+      else {
+        this.colorText = "light";
+      }
+    })
+        
+
     
   }
   async close(){
