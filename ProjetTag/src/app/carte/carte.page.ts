@@ -225,3 +225,4 @@ export class CartePage implements OnInit {
 
 
 //afficher uniquement les points proches avec : "https://data.mobilites-m.fr/api/bbox/json?xmin=5.7029&xmax=5.71146&ymin=45.10554&ymax=45.223&types=arret"
+//creer un storage pour les recherches recentes

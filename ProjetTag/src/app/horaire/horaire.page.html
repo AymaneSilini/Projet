@@ -5,7 +5,7 @@
   <ion-button (click)="close()">
     <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
   </ion-button>
-  <ion-item></ion-item>
+  <ion-item>{{this.api.ligne}}</ion-item>
   <ion-card>
     <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
   <ion-list>

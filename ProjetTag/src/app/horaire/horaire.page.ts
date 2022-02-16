@@ -14,10 +14,15 @@ export class HorairePage implements OnInit {
   arret : Arret[] = [];
   urlBase:string;
   search: String = "";
- 
+  color:String = "";
+  depart:string = "";
+  arrivee:string = "";
+
 
   constructor(private modalCtrl: ModalController, private api:ApiService) {
     this.urlBase = this.api.urlInfo;
+    console.log(this.arret);
+
    }
 
   ngOnInit() {
@@ -25,7 +30,6 @@ export class HorairePage implements OnInit {
     this.api.getInfo().subscribe(data=>{
       this.arret= data[0]["arrets"];
     })
-
     
   }
   async close(){
