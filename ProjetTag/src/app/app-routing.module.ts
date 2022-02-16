@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'horaire',
     loadChildren: () => import('./horaire/horaire.module').then( m => m.HorairePageModule)
+  },  {
+    path: 'itineraire-detail',
+    loadChildren: () => import('./itineraire-detail/itineraire-detail.module').then( m => m.ItineraireDetailPageModule)
   },
+
   
 ];
 
