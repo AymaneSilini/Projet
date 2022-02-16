@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { HorairePageRoutingModule } from './horaire-routing.module';
 
 import { HorairePage } from './horaire.page';
+import { ArretFiltrePipe } from '../service/arret-filtre.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { HorairePage } from './horaire.page';
     IonicModule,
     HorairePageRoutingModule
   ],
-  declarations: [HorairePage]
+  declarations: [HorairePage, ArretFiltrePipe],
+  exports: [ArretFiltrePipe]
 })
 export class HorairePageModule {}
