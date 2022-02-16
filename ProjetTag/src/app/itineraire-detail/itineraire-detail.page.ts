@@ -29,19 +29,18 @@ export class ItineraireDetailPage implements OnInit {
 
   async ngOnInit() {
     await this.getCurrentCoordinates();
-    
     console.log(`${this.departe}`);
     console.log(`${this.arrive}`);
     console.log(`${this.date}`);
+        
   }
 
   ionViewDidEnter() { 
     this.leafletMap();
-    console.log(this.latitude)
   }
 
   leafletMap() {
-    this.map = Leaflet.map('mapId').setView([ this.latitude, this.longitude], 15);
+    this.map = Leaflet.map('mapIti').setView([ this.latitude, this.longitude], 15);
     this.map.on("load",this.loaded=true);
     Leaflet.tileLayer('https://data.mobilites-m.fr/carte/{z}/{x}/{y}.png', {minZoom:12}).addTo(this.map);
 
@@ -68,6 +67,7 @@ export class ItineraireDetailPage implements OnInit {
     const closeModal: string = "Modal Closed";
     if(this.loaded==true){
       this.map.remove();
+      this.loaded=false;
     }
     await this.modalCtrl.dismiss(closeModal);
   }
