@@ -8,9 +8,16 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <h2>Sens 1</h2>
     <ion-item *ngFor="let passage of convertArret">
       <ion-icon name="time-outline"></ion-icon>
       <ion-label>{{passage}}</ion-label>
+    </ion-item>
+
+    <h2>Sens 2</h2>
+    <ion-item *ngFor="let passage2 of convertArret2">
+      <ion-icon name="time-outline"></ion-icon>
+      <ion-label>{{passage2}}</ion-label>
     </ion-item>
   
   </ion-content>

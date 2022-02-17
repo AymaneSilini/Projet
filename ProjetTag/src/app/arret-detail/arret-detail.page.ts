@@ -23,9 +23,10 @@ export class ArretDetailPage implements OnInit {
   public d = new Date();//je déclare une variable pour la conversion
   public data = [];
   public convertArret = [];
+  public convertArret2 = [];
   public noData: any;
   public results: Array<Arret> = []; //tableau qui peut contenir que des objets de type arret
-  //public results2 = [];
+  public results2:Array<Arret> = [];
 
   constructor(private api: ApiService, private modalCtrl: ModalController) { }
 
@@ -71,6 +72,28 @@ export class ArretDetailPage implements OnInit {
       }
       this.convert();
     });
+
+    this.api.getHoraire(data[1],time).subscribe(results =>  {
+      this.data = results;
+      //console.log(this.data);
+      var tmp:string;
+      for (let i = 0; i <this.data[1].arrets.length;i++){
+        //console.log(this.data[1]["arrets"][i]["stopName"]);
+        tmp =this.data[1]["arrets"][i]["stopName"];
+
+        if(tmp.toLowerCase().includes(this.nom.toLowerCase(), 0)){
+        let newArret: Arret = {
+          //cree un objet de type arret qui correspond  a linterace arret
+          //objet arret pour init des valeur dedans
+          nomArret: this.data[1]["arrets"][i]["stopName"],
+          horaires: this.data[1]["arrets"][i]["trips"]
+        };
+        this.results2.push(newArret);//ajoute des elements à la liste
+        }
+        
+      }
+      this.convert();
+    });
   })
     })
     
@@ -91,6 +114,17 @@ convert(){
       this.convertArret.push(formatDate(passage,'HH:mm','en'));
     }
     console.log(this.convertArret);
+  }
+
+  for(let j = 0; j < this.results2.length ;j++){
+    ////console.log(this.results2[j].horaires); //renvoie 4 horaires
+    convert = '';
+    for (let i = 0; i < this.results2[j].horaires.length;i++){
+      ////console.log(this.results2[j].horaires[i]);
+      let passage = new Date(this.d.getTime() + this.results2[j].horaires[i] * 1000);
+      this.convertArret2.push(formatDate(passage,'HH:mm','en'));
+    }
+    console.log(this.convertArret2);
   }
 }
 
