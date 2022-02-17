@@ -8,13 +8,17 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h4>{{depart}} <b>-</b> {{arrivee}}</h4>
+  <h5>{{depart}}</h5>
+  <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+  <h5>{{arrivee}}</h5>
     <ion-item *ngFor="let passage of convertArret">
       <ion-icon name="time-outline"></ion-icon>
       <ion-label>{{passage}}</ion-label>
     </ion-item>
 
-    <h4>{{arrivee}} <b>-</b> {{depart}}</h4>
+    <h5>{{arrivee}} </h5>
+    <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+    <h5>{{depart}}</h5>
     <ion-item *ngFor="let passage2 of convertArret2">
       <ion-icon name="time-outline"></ion-icon>
       <ion-label>{{passage2}}</ion-label>
