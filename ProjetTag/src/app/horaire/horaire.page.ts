@@ -17,11 +17,13 @@ export class HorairePage implements OnInit {
   arrivee:string = "";
   lenght:number;
   ligne = [];
-  heure:number;
   colorText:string;
-  strips = [];
+  trips = [];
+
   min:string;
-  h:string;
+  heures:string;
+  tableauHoraire = [];
+
   urlPlan = "https://www.tag.fr/ftp/fiche_horaires/fiche_horaires_2014/PLAN_";
 
   constructor(private modalCtrl: ModalController, private api:ApiService) {
@@ -30,10 +32,10 @@ export class HorairePage implements OnInit {
    }
 
   ngOnInit() {
-    this.api.urlInfo = this.api.urlInfo + this.api.ligne;
+     this.api.urlInfo = this.api.urlInfo + this.api.ligne;
     this.api.getInfo().subscribe(data=>{
       this.arret= data[0]["arrets"];
-      this.strips = data[0]["arrets"]
+      this.trips = data[0]["arrets"]
       this.depart = data[0]["arrets"][0]["stopName"];
       this.arrivee = data[1]["arrets"][0]["stopName"];     
     })
@@ -60,20 +62,25 @@ export class HorairePage implements OnInit {
     this.api.urlInfo = this.urlBase;
   }
 
-
+ //recuper l'id correspondant a appel.station.name, apppeler la fonction getligne
+ //chercher le strs
   getHoraire(event){
     let x = event.srcElement.id;
-    let tableau = x.split(",");
-     for (let k=0;k<tableau;k++){
-      var d = Number(tableau[k]);
-      console.log(d);
+    this.tableauHoraire = x.split(",");
+    for (let k=0;k<(this.tableauHoraire).length;k++){
+      var d = Number(this.tableauHoraire[k]);
+      var h = Math.floor(d / 3600);
+      var m = Math.floor(d % 3600 / 60);
+      if (m<10){
+        this.min = "0" + m.toString();
+      }
+      else{
+        this.min = m.toString();
+      }
+      this.heures = h.toString() + "h" +this.min + " /";
+      let base  = document.getElementById(x).innerText;
+       document.getElementById(x).innerHTML += this.heures;
    }
-
-  //   var d = Number(x);
-  //   var h = Math.floor(d / 3600);
-  //   var m = Math.floor(d % 3600 / 60);
-   
-  //   // console.log(h + "h" + m);
   }
 
   

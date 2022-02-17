@@ -14,11 +14,14 @@
     </ion-card-header>
 
     <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
-  <ion-list>
+  <ion-list >
+    <ion-button>Afficher les horaires</ion-button>
         <ion-item  id = "{{A.trips}}" slot="start" *ngFor = "let A of arret | arretFiltre:search" (click) = "getHoraire($event)">
                 {{A.parentStation.name}}
                 <br>
                 {{A.parentStation.city}}
+                <br>
+            
         </ion-item>
   </ion-list>
 </ion-card>

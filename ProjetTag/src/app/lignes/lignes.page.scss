@@ -31,8 +31,20 @@ ion-card {
   padding: 2% 2%;
   width: auto;
   }
+
   ion-buttons {
     padding-left: 2% 2%;
-    margin-left: 1%;
+    padding-right: 2% 2%;
 
+    margin-left: 1%;
+    padding-top: 2%;
   }
+
+.toolbutton{
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items: flex-end;
+    flex-direction: row;
+}
