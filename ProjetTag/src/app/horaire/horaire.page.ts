@@ -19,7 +19,7 @@ export class HorairePage implements OnInit {
   ligne = [];
   colorText:string;
   trips = [];
-
+  dateActuelle:number;
   min:string;
   heures:string;
   tableauHoraire = [];
@@ -29,10 +29,19 @@ export class HorairePage implements OnInit {
   constructor(private modalCtrl: ModalController, private api:ApiService) {
     this.urlBase = this.api.urlInfo;
     this.lenght = 0;
+    var dateMinuit = new Date();
+    dateMinuit.setHours(0,0,0,0);
+    var dateSec = dateMinuit.getTime();
+    console.log ("dateminuit" + dateMinuit);
+    this.dateActuelle = new Date().getTime() + 3600000;
+    // var dateFinale =  dateActuelle - dateSec;
+    // dateFinale = dateFinale /1000;
+    console.log(this.dateActuelle);
    }
 
   ngOnInit() {
-     this.api.urlInfo = this.api.urlInfo + this.api.ligne;
+     this.api.urlInfo = this.api.urlInfo + this.api.ligne + "&time=" + this.dateActuelle.toString();
+     console.log(this.api.urlInfo);
     this.api.getInfo().subscribe(data=>{
       this.arret= data[0]["arrets"];
       this.trips = data[0]["arrets"]
@@ -77,10 +86,21 @@ export class HorairePage implements OnInit {
       else{
         this.min = m.toString();
       }
-      this.heures = h.toString() + "h" +this.min + " /";
-      let base  = document.getElementById(x).innerText;
-       document.getElementById(x).innerHTML += this.heures;
+      
+      this.heures = h.toString() + ":" +this.min + " ";
+      
+      document.getElementById("horaire"+x).innerHTML += this.heures;
    }
+  }
+
+  changeSens(){
+    var change = this.depart;
+    this.depart = this.arrivee; 
+    this.arrivee = change;
+  }
+
+  suivant(){
+    this.dateActuelle 
   }
 
   
