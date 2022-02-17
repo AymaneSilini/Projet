@@ -17,7 +17,11 @@ const routes: Routes = [
   {
     path: 'arret-detail',
     loadChildren: () => import('./arret-detail/arret-detail.module').then( m => m.ArretDetailPageModule)
+  },  {
+    path: 'pdf',
+    loadChildren: () => import('./pdf/pdf.module').then( m => m.PdfPageModule)
   },
+
 
   
 ];

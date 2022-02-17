@@ -9,13 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { ArretFiltrePipe } from './service/arret-filtre.pipe';
 
 import { HttpClientModule } from '@angular/common/http';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { DocumentViewer } from '@awesome-cordova-plugins/document-viewer/ngx';
 
 @NgModule({
   declarations: [AppComponent, ArretFiltrePipe],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [Geolocation, DocumentViewer, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

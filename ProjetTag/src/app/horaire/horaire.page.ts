@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ApiService } from '../service/api.service';
 import { Arret } from '../service/arret';
+import { PdfPage } from '../pdf/pdf.page';
 
 @Component({
   selector: 'app-horaire',
@@ -61,9 +62,20 @@ export class HorairePage implements OnInit {
       }
     })
     this.urlPlan = this.urlPlan + this.api.ligne + ".pdf";
+    this.initModal();
+    
     
   }
 
+  async initModal(){
+    const modal = await this.modalCtrl.create({
+      component:PdfPage,
+      componentProps: { 
+        pdf: this.urlPlan
+      }
+    });
+    return await modal.present();
+  }
   
   async close(){
     const closeModal: string = 'Modal closed';

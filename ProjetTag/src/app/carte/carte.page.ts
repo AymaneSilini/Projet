@@ -1,7 +1,7 @@
 import { Attribute, Component, OnInit } from '@angular/core';
 import * as Leaflet from 'leaflet';
 import { ApiService } from '../service/api.service';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { ArretDetailPage } from '../arret-detail/arret-detail.page';
 import { ModalController } from '@ionic/angular';
 

@@ -1,7 +1,8 @@
 {
   "name": "ProjetTag",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
