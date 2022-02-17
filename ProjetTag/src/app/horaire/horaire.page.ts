@@ -77,7 +77,14 @@ export class HorairePage implements OnInit {
     let x = event.srcElement.id;
     this.tableauHoraire = x.split(",");
     for (let k=0;k<(this.tableauHoraire).length;k++){
-      var d = Number(this.tableauHoraire[k]);
+      var horaire = this.transformHoraire(this.tableauHoraire[k])
+      document.getElementById("horaire"+x).innerHTML += horaire;
+   }
+  }
+
+
+  transformHoraire(x){
+    var d = Number(x);
       var h = Math.floor(d / 3600);
       var m = Math.floor(d % 3600 / 60);
       if (m<10){
@@ -87,10 +94,8 @@ export class HorairePage implements OnInit {
         this.min = m.toString();
       }
       
-      this.heures = h.toString() + ":" +this.min + " ";
-      
-      document.getElementById("horaire"+x).innerHTML += this.heures;
-   }
+      return this.heures = h.toString() + ":" +this.min + " ";
+
   }
 
   changeSens(){
@@ -100,8 +105,20 @@ export class HorairePage implements OnInit {
   }
 
   suivant(){
-    this.dateActuelle 
+    // + 10 min
+    this.dateActuelle = this.dateActuelle + 600000;
+    console.log(this.dateActuelle)
+    //relance affichage de date
   }
+
+  precedent(){
+    this.dateActuelle = this.dateActuelle - 600000;
+        console.log(this.dateActuelle)
+
+    //relance affichage de date
+
+  }
+
 
   
 
