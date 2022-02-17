@@ -1,4 +1,4 @@
 export interface Arret {
-    stopName : String;
+    stopName : string;
     trips: number;
 }

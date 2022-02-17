@@ -17,6 +17,15 @@ const routes: Routes = [
     path: 'arret-detail',
     loadChildren: () => import('./arret-detail/arret-detail.module').then( m => m.ArretDetailPageModule)
   },
+<<<<<<< HEAD
+=======
+  {
+    path: 'itineraire-detail',
+    loadChildren: () => import('./itineraire-detail/itineraire-detail.module').then( m => m.ItineraireDetailPageModule)
+  },
+  
+];
+>>>>>>> fa332f325ed050ac6b9dbc366eb8babb09123607
 
   
 ];

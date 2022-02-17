@@ -1,11 +1,11 @@
 <ion-content fullscreen>
-  <ion-fab horizontal="end" style="width: 90%; padding-top: 2%" slot="fixed">
-  <ion-toolbar>
-    <ion-searchbar [(ngModel)]="search" (ionChange)="research()" slot="start"></ion-searchbar>
-    <ion-icon slot="start" name="moon-outline"></ion-icon>
-    <ion-toggle [(ngModel)]="toogleval" (ionChange)="tooglechanged()" slot="end"></ion-toggle>
-  </ion-toolbar>
-  </ion-fab>
-    <div id="mapId" style="width: 100%; height: 100%"></div>
-  
-  </ion-content>
+<ion-fab horizontal="end" style="width: 90%; padding-top: 2%" slot="fixed">
+<ion-toolbar>
+  <ion-searchbar [(ngModel)]="search" (ionChange)="research()" slot="start"></ion-searchbar>
+  <ion-icon slot="start" name="moon"></ion-icon>
+  <ion-toggle color="dark" [(ngModel)]="toogleval" (ionChange)="tooglechanged()" slot="end"></ion-toggle>
+</ion-toolbar>
+</ion-fab>
+  <div id="mapId" style="width: 100%; height: 100%"></div>
+
+</ion-content>

@@ -19,10 +19,8 @@ export class ApiService {
   urlArret="https://data.mobilites-m.fr/api/linesNear/json?"
   urlHoraire = 'https://data.mobilites-m.fr/api/ficheHoraires/json?route=';
  
-
   color:string;
   ligne:string;
-
 
   constructor(private http: HttpClient) { 
   }

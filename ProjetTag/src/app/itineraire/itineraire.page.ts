@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ItineraireDetailPage } from '../itineraire-detail/itineraire-detail.page';
-
 @Component({
   selector: 'app-itineraire',
   templateUrl: './itineraire.page.html',

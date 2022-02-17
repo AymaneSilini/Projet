@@ -22,7 +22,11 @@
 
   .titre{
     font-weight: bold;
+<<<<<<< HEAD
     color: black;
+=======
+    font: 1em;
+>>>>>>> fa332f325ed050ac6b9dbc366eb8babb09123607
 
 
 }
@@ -31,8 +35,28 @@ ion-card {
   padding: 2% 2%;
   width: auto;
   }
+<<<<<<< HEAD
   ion-buttons {
     padding-left: 2% 2%;
     margin-left: 1%;
 
   }
+=======
+
+  ion-buttons {
+    padding-left: 2% 2%;
+    padding-right: 2% 2%;
+
+    margin-left: 1%;
+    padding-top: 2%;
+  }
+
+.toolbutton{
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items: flex-end;
+    flex-direction: row;
+}
+>>>>>>> fa332f325ed050ac6b9dbc366eb8babb09123607

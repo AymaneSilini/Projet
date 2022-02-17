@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content fullscreen>
 
   <ion-button (click)="close()" class = "transparent" >
     <ion-icon slot="icon-only" name="arrow-back-outline" color ="dark"></ion-icon>
@@ -6,27 +6,54 @@
   
   <ion-card>
     <ion-card-header [ngStyle]="{'background-color':this.api.color}">
-      <ion-card-title color = {{this.colorText}} >
-        <ion-row>{{this.api.ligne}}</ion-row> 
-        <ion-row>{{this.depart}} 
-        <br>  {{this.arrivee}}</ion-row> 
-      </ion-card-title>
-
-      <ion-button (click) = "show()">
-      </ion-button>
-     
+      <ion-card-title [ngStyle]="{'color':colorText}" >
+        <ion-row>Ligne {{this.api.ligne}}</ion-row> 
+        <ion-row>{{this.depart}} </ion-row> 
+        <ion-row>Vers</ion-row>
+        <ion-row> {{this.arrivee}}</ion-row> 
+      </ion-card-title>     
     </ion-card-header>
+      
 
-    <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
-  <ion-list>
-        <ion-item slot="start" *ngFor = "let A of arret | arretFiltre:search">
-                {{A.parentStation.name}}
+      <ion-row>
+
+        <ion-col width-20 style="text-align: left; width : auto">
+        <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
+        </ion-col>
+        <ion-col width-80 style="text-align: right">
+        <ion-button class="transparent" (click)="changeSens()">
+          <ion-icon slot="icon-only" name="swap-vertical-sharp" color = "dark"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+
+      <ion-col width-80 style="text-align: right">
+        <ion-button class="transparent" (click)="precedent()">
+          <ion-icon slot="icon-only" name="chevron-back-sharp" color = "dark"></ion-icon>
+        </ion-button>
+        <ion-button class="transparent" (click)="suivant()">
+          <ion-icon slot="icon-only" name="chevron-forward-sharp" color = "dark"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      
+
+    </ion-row>
+
+  <ion-list >
+        <ion-item  id = "{{A.trips}}" slot="start" *ngFor = "let A of arret | arretFiltre:search" (click) = "getHoraire($event)">
+                <div >
+                  {{A.parentStation.name}}
                 <br>
                 {{A.parentStation.city}}
-
                 <br>
-              {{A.trips}}
-    </ion-item>
+                </div>   
+                
+                <div id ="horaire{{A.trips}}">
+
+                </div>
+        </ion-item>
   </ion-list>
 </ion-card>
 </ion-content>
+
