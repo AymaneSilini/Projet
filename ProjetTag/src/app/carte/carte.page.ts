@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Attribute, Component, OnInit } from '@angular/core';
 import * as Leaflet from 'leaflet';
 import { ApiService } from '../service/api.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { ArretDetailPage } from '../arret-detail/arret-detail.page';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-carte',
@@ -19,10 +21,11 @@ export class CartePage implements OnInit {
   private toogleval: boolean;
   dataArret = [];
   markers=[];
-  latitudePosition; //latitude
-  longitudePosition; //longitude
+  latitudePosition = 45.19324830070729; //latitude
+  longitudePosition= 5.719439625003748; //longitude
   long:string;
   lat:string;
+  coords;
 
   trajetTramA = [];
   trajetTramB = [];
@@ -48,7 +51,7 @@ export class CartePage implements OnInit {
         iconSize: [40, 40]
         });
 
-  constructor(private api:ApiService,private geolocation: Geolocation) { 
+  constructor(private api:ApiService,private geolocation: Geolocation, private modalCtrl: ModalController) { 
     this.darkmap = 'https://data.mobilites-m.fr/carte-dark/{z}/{x}/{y}.png';
     this.clearmap = 'https://data.mobilites-m.fr/carte/{z}/{x}/{y}.png'
   }
@@ -89,9 +92,12 @@ export class CartePage implements OnInit {
     await this.geolocation.getCurrentPosition().then((resp) => {
       this.latitudePosition = resp.coords.latitude;
       this.longitudePosition = resp.coords.longitude;
+      //console.log("BBBBBB", this.latitudePosition, this.longitudePosition)
+
      }).catch((error) => {
        console.log('Error getting location', error);
      });
+     //console.log("AAAAa")
   }
 
   research(){
@@ -198,9 +204,26 @@ export class CartePage implements OnInit {
   }
 
 }
+
     
 createMarkers(){
   //console.log(this.map.getZoom());
+
+  let _this = this;
+  async function arretDetail(a){
+    console.log(a.latlng.lng);
+    const modal = await _this.modalCtrl.create({
+      component:ArretDetailPage,
+      componentProps: { 
+        lat: a.latlng.lat,
+        lng: a.latlng.lng
+      }
+    });
+    
+    return await modal.present();
+    
+  }
+  
   if(this.map.getZoom()>15 && this.map.hasLayer(this.groupMarkers)==false){
     for (let k=0;k<this.dataArret.length;k++){
       if (this.dataArret[k]["properties"]["COMMUNE"] == "GRENOBLE" || this.dataArret[k]["properties"]["COMMUNE"] == "ÉCHIROLLES" || 
@@ -209,7 +232,10 @@ createMarkers(){
       || this.dataArret[k]["properties"]["COMMUNE"] == "SAINT-MARTIN-LE-VINOUX"|| this.dataArret[k]["properties"]["COMMUNE"] == "SAINT-ÉGRÈVE" 
       || this.dataArret[k]["properties"]["COMMUNE"] == "FONTANIL-CORNILLON"|| this.dataArret[k]["properties"]["COMMUNE"] == "LA TRONCHE"
       || this.dataArret[k]["properties"]["COMMUNE"] == "GIÈRES" || this.dataArret[k]["properties"]["COMMUNE"] == "LE PONT-DE-CLAIX"){
-        this.markers.push(Leaflet.marker([this.dataArret[k]["geometry"]["coordinates"][1], this.dataArret[k]["geometry"]["coordinates"][0]],{icon:this.iconbus}).addTo(this.map).bindPopup(this.dataArret[k]["properties"]["LIBELLE"]));
+        this.markers.push(
+          Leaflet.marker([this.dataArret[k]["geometry"]["coordinates"][1], 
+          this.dataArret[k]["geometry"]["coordinates"][0]],
+          {icon:this.iconbus}).on('click',arretDetail).addTo(this.map));
       }
     }
     this.groupMarkers = Leaflet.layerGroup(this.markers).addTo(this.map);

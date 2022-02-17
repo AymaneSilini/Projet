@@ -12,4 +12,6 @@ export class FavorisPage implements OnInit {
   ngOnInit() {
   }
 
+
+
 }

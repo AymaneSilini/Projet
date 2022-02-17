@@ -1,18 +1,31 @@
-
-
 <ion-content>
 
-  <ion-button (click)="close()">
-    <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
-  </ion-button>
-  <ion-item>{{this.api.ligne}}</ion-item>
+  <ion-button (click)="close()" class = "transparent" >
+    <ion-icon slot="icon-only" name="arrow-back-outline" color ="dark"></ion-icon>
+  </ion-button >
+  
   <ion-card>
+    <ion-card-header [ngStyle]="{'background-color':this.api.color}">
+      <ion-card-title color = {{this.colorText}} >
+        <ion-row>{{this.api.ligne}}</ion-row> 
+        <ion-row>{{this.depart}} 
+        <br>  {{this.arrivee}}</ion-row> 
+      </ion-card-title>
+
+      <ion-button (click) = "show()">
+      </ion-button>
+     
+    </ion-card-header>
+
     <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
   <ion-list>
         <ion-item slot="start" *ngFor = "let A of arret | arretFiltre:search">
-                {{A.stopName}}
+                {{A.parentStation.name}}
                 <br>
-                {{A.trips}}
+                {{A.parentStation.city}}
+
+                <br>
+              {{A.trips}}
     </ion-item>
   </ion-list>
 </ion-card>

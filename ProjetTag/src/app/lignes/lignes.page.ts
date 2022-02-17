@@ -3,8 +3,6 @@ import { ApiService } from '../service/api.service';
 import { ModalController } from '@ionic/angular';
 import { HorairePage } from '../horaire/horaire.page';
 
-
-
 @Component({
   selector: 'app-lignes',
   templateUrl: './lignes.page.html',
@@ -47,14 +45,8 @@ export class LignesPage implements OnInit {
       }
     });
 
+
     }
-  
-  
-
-
-  showDetail(){
-    console.log("click");
-  }
 
   async iniModal($event){
     const modal = await this.modalCtrl.create({
@@ -63,13 +55,8 @@ export class LignesPage implements OnInit {
   
 
     this.api.ligne = $event.target.id;
-    console.log(this.api.ligne);
-  return await modal.present();
+    return await modal.present();
 }
-
-
-
-
 }
 
 

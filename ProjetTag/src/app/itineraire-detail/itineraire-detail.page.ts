@@ -14,7 +14,7 @@ export class ItineraireDetailPage implements OnInit {
   latitude; //latitude
   longitude; //longitude
   loaded=false;
-  departe;
+  depart;
   arrive;
   date;
   
@@ -29,7 +29,7 @@ export class ItineraireDetailPage implements OnInit {
 
   async ngOnInit() {
     await this.getCurrentCoordinates();
-    console.log(`${this.departe}`);
+    console.log(`${this.depart}`);
     console.log(`${this.arrive}`);
     console.log(`${this.date}`);
         

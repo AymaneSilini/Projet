@@ -8,7 +8,7 @@ import { ItineraireDetailPage } from '../itineraire-detail/itineraire-detail.pag
   styleUrls: ['./itineraire.page.scss'],
 })
 export class ItinerairePage implements OnInit {
-  departe;
+  depart;
   arrive;
   date;
 
@@ -21,7 +21,7 @@ export class ItinerairePage implements OnInit {
     const modal = await this.modalCtrl.create({
       component:ItineraireDetailPage,
       componentProps: { 
-        departe: this.departe,
+        depart: this.depart,
         arrive: this.arrive,
         date: this.date
       }
