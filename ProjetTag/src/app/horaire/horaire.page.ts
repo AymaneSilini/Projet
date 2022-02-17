@@ -18,33 +18,32 @@ export class HorairePage implements OnInit {
   lenght:number;
   ligne = [];
   colorText:string;
-  trips = [];
+  sens1 = [];
+  sens0 = [];
   dateActuelle:number;
   min:string;
   heures:string;
   tableauHoraire = [];
+  sens:boolean;
 
   urlPlan = "https://www.tag.fr/ftp/fiche_horaires/fiche_horaires_2014/PLAN_";
 
   constructor(private modalCtrl: ModalController, private api:ApiService) {
     this.urlBase = this.api.urlInfo;
     this.lenght = 0;
-    var dateMinuit = new Date();
-    dateMinuit.setHours(0,0,0,0);
-    var dateSec = dateMinuit.getTime();
-    console.log ("dateminuit" + dateMinuit);
     this.dateActuelle = new Date().getTime() + 3600000;
     // var dateFinale =  dateActuelle - dateSec;
     // dateFinale = dateFinale /1000;
     console.log(this.dateActuelle);
+    this.sens = false;
    }
 
   ngOnInit() {
-     this.api.urlInfo = this.api.urlInfo + this.api.ligne + "&time=" + this.dateActuelle.toString();
-     console.log(this.api.urlInfo);
+    this.api.urlInfo = this.api.urlInfo + this.api.ligne + "&time=" + this.dateActuelle.toString();
     this.api.getInfo().subscribe(data=>{
-      this.arret= data[0]["arrets"];
-      this.trips = data[0]["arrets"]
+      this.arret = data[0]["arrets"];
+      this.sens0 = data[0]["arrets"];
+      this.sens1 = data[1]["arrets"];
       this.depart = data[0]["arrets"][0]["stopName"];
       this.arrivee = data[1]["arrets"][0]["stopName"];     
     })
@@ -71,8 +70,6 @@ export class HorairePage implements OnInit {
     this.api.urlInfo = this.urlBase;
   }
 
- //recuper l'id correspondant a appel.station.name, apppeler la fonction getligne
- //chercher le strs
   getHoraire(event){
     let x = event.srcElement.id;
     this.tableauHoraire = x.split(",");
@@ -81,7 +78,6 @@ export class HorairePage implements OnInit {
       document.getElementById("horaire"+x).innerHTML += horaire;
    }
   }
-
 
   transformHoraire(x){
     var d = Number(x);
@@ -93,12 +89,18 @@ export class HorairePage implements OnInit {
       else{
         this.min = m.toString();
       }
-      
       return this.heures = h.toString() + ":" +this.min + " ";
-
   }
 
   changeSens(){
+    if (this.sens == false){
+      this.arret = this.sens1;
+    }
+    else if (this.sens ==true){
+      this.arret = this.sens0;
+    }
+    this.sens  = !this.sens;
+
     var change = this.depart;
     this.depart = this.arrivee; 
     this.arrivee = change;
