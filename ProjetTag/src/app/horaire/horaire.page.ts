@@ -26,7 +26,6 @@ export class HorairePage implements OnInit {
   tableauHoraire = [];
   sens:boolean;
 
-  urlPlan = "https://www.tag.fr/ftp/fiche_horaires/fiche_horaires_2014/PLAN_";
 
   constructor(private modalCtrl: ModalController, private api:ApiService) {
     this.urlBase = this.api.urlInfo;
@@ -59,9 +58,9 @@ export class HorairePage implements OnInit {
         this.colorText = "white";
       }
     })
-    this.urlPlan = this.urlPlan + this.api.ligne + ".pdf";
     
   }
+  
 
   
   async close(){
@@ -75,6 +74,7 @@ export class HorairePage implements OnInit {
     this.tableauHoraire = x.split(",");
     for (let k=0;k<(this.tableauHoraire).length;k++){
       var horaire = this.transformHoraire(this.tableauHoraire[k])
+      console.log( typeof horaire + k);
       document.getElementById("horaire"+x).innerHTML += horaire;
    }
   }
@@ -110,6 +110,7 @@ export class HorairePage implements OnInit {
     // + 10 min
     this.dateActuelle = this.dateActuelle + 600000;
     console.log(this.dateActuelle)
+    
     //relance affichage de date
   }
 

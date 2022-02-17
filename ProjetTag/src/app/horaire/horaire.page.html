@@ -7,24 +7,18 @@
   <ion-card>
     <ion-card-header [ngStyle]="{'background-color':this.api.color}">
       <ion-card-title [ngStyle]="{'color':colorText}" >
-        <ion-row>Ligne {{this.api.ligne}}</ion-row> 
-        <ion-row>{{this.depart}} </ion-row> 
-        <ion-row>Vers</ion-row>
-        <ion-row> {{this.arrivee}}</ion-row> 
+        <ion-row >Ligne {{this.api.ligne}}</ion-row> 
+        <ion-row >{{this.depart}} </ion-row> 
+        <ion-row >Vers</ion-row>
+       <ion-row> {{this.arrivee}}</ion-row> 
       </ion-card-title>     
     </ion-card-header>
       
 
       <ion-row>
-
-        <ion-col width-20 style="text-align: left; width : auto">
+        <ion-col style="text-align: left; width : auto">
         <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
         </ion-col>
-        <ion-col width-80 style="text-align: right">
-        <ion-button class="transparent" (click)="changeSens()">
-          <ion-icon slot="icon-only" name="swap-vertical-sharp" color = "dark"></ion-icon>
-        </ion-button>
-      </ion-col>
       </ion-row>
 
 
@@ -33,6 +27,11 @@
       <ion-col width-80 style="text-align: left">
         <ion-button class="transparent" (click)="precedent()">
           <ion-icon slot="icon-only" name="chevron-back-sharp" color = "dark"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col width-80 style="text-align: center">
+        <ion-button class="transparent" (click)="changeSens()">
+          <ion-icon slot="icon-only" name="swap-vertical-sharp" color = "dark"></ion-icon>
         </ion-button>
       </ion-col>
 
