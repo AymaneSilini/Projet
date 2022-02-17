@@ -29,6 +29,7 @@
           <ion-icon slot="icon-only" name="chevron-back-sharp" color = "dark"></ion-icon>
         </ion-button>
       </ion-col>
+
       <ion-col width-80 style="text-align: center">
         <ion-button class="transparent" (click)="changeSens()">
           <ion-icon slot="icon-only" name="swap-vertical-sharp" color = "dark"></ion-icon>
@@ -44,14 +45,14 @@
 
   <ion-list >
         <ion-item  id = "{{A.trips}}" slot="start" *ngFor = "let A of arret | arretFiltre:search" (click) = "getHoraire($event)">
-                <div >
+                <div slot="start">
                   {{A.parentStation.name}}
                 <br>
                 {{A.parentStation.city}}
                 <br>
                 </div>   
-                
-                <div id ="horaire{{A.trips}}">
+                <div id ="horaire{{A.trips}}" slot="end">
+                  {{this.horaire}}
 
                 </div>
         </ion-item>

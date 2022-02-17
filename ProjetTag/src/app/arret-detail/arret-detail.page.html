@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="close()" class = "transparent" >
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+    </ion-button >
+    <ion-title>{{nom}} - Horaires prochaines</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h5>{{depart}}</h5>
+  <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+  <h5>{{arrivee}}</h5>
+    <ion-item *ngFor="let passage of convertArret">
+      <ion-icon name="time-outline"></ion-icon>
+      <ion-label>{{passage}}</ion-label>
+    </ion-item>
+
+    <h5>{{arrivee}} </h5>
+    <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+    <h5>{{depart}}</h5>
+    <ion-item *ngFor="let passage2 of convertArret2">
+      <ion-icon name="time-outline"></ion-icon>
+      <ion-label>{{passage2}}</ion-label>
+    </ion-item>
+  
+  </ion-content>

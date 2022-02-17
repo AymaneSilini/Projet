@@ -22,7 +22,7 @@ export class ItinerairePage implements OnInit {
       componentProps: { 
         depart: this.depart,
         arrive: this.arrive,
-        date: this.date,
+        date: this.date
       }
     });
     return await modal.present();
