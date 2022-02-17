@@ -27,6 +27,8 @@ export class ArretDetailPage implements OnInit {
   public noData: any;
   public results: Array<Arret> = []; //tableau qui peut contenir que des objets de type arret
   public results2:Array<Arret> = [];
+  depart;
+  arrivee;
 
   constructor(private api: ApiService, private modalCtrl: ModalController) { }
 
@@ -53,7 +55,8 @@ export class ArretDetailPage implements OnInit {
     //console.log(data[0])
     this.api.getHoraire(data[0],time).subscribe(results =>  {
       this.data = results;
-      //console.log(this.data);
+      this.depart = results[0]["arrets"][0]["stopName"];
+      this.arrivee = results[1]["arrets"][0]["stopName"];  
       var tmp:string;
       for (let i = 0; i <this.data[0].arrets.length;i++){
         //console.log(this.data[0]["arrets"][i]["stopName"]);
