@@ -114,12 +114,10 @@ export class HorairePage implements OnInit {
     this.dateActuelle = this.dateActuelle + 600000;
     this.api.urlInfo = this.urlBase + this.api.ligne + "&time=" + this.dateActuelle.toString();
     this.api.getInfo().subscribe(data=>{
-      this.arret = data[0]["arrets"];
-      this.sens0 = data[0]["arrets"];
-      this.sens1 = data[1]["arrets"];
-      this.depart = data[0]["arrets"][0]["stopName"];
-      this.arrivee = data[1]["arrets"][0]["stopName"];     
+      this.arret = data[0]["arrets"];    
     })    
+
+    
 
 }
 
@@ -128,11 +126,9 @@ export class HorairePage implements OnInit {
     this.api.urlInfo = this.urlBase + this.api.ligne + "&time=" + this.dateActuelle.toString();
     this.api.getInfo().subscribe(data=>{
       this.arret = data[0]["arrets"];
-      this.sens0 = data[0]["arrets"];
-      this.sens1 = data[1]["arrets"];
-      this.depart = data[0]["arrets"][0]["stopName"];
-      this.arrivee = data[1]["arrets"][0]["stopName"];     
-    })    
+    })  
+
+
 
   }
 
