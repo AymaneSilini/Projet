@@ -30,6 +30,7 @@ export class ArretDetailPage implements OnInit {
   constructor(private api: ApiService, private modalCtrl: ModalController) { }
 
   async ngOnInit() {
+    var time = new Date().getTime() + 3600000;
     //console.log("Coords", `${this.lat}`,`${this.lng}`)
     await this.api.getDetailLigne().subscribe(data=>{
       for (let k=0;k<data["features"].length;k++){
@@ -49,7 +50,7 @@ export class ArretDetailPage implements OnInit {
   }
   this.api.getArret(`${this.lng}`,`${this.lat}`).subscribe(data=>{
     //console.log(data[0])
-    this.api.getHoraire(data[0]).subscribe(results =>  {
+    this.api.getHoraire(data[0],time).subscribe(results =>  {
       this.data = results;
       //console.log(this.data);
       var tmp:string;

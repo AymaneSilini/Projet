@@ -55,8 +55,8 @@ export class ApiService {
     return this.http.get(this.urlArret+"x="+x+"&y="+y+"&dist=80");
   }
 
-  public getHoraire(sem):Observable <any>{
-    return this.http.get(this.urlHoraire+sem+'&time=1645020420000&router=default');
+  public getHoraire(sem,time):Observable <any>{
+    return this.http.get(this.urlHoraire+sem+'&time='+time+'&router=default');
   }
 
 
