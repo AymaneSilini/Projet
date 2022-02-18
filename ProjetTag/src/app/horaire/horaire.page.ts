@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ApiService } from '../service/api.service';
 import { Arret } from '../service/arret';
-import { PdfPage } from '../pdf/pdf.page';
 
 @Component({
   selector: 'app-horaire',
@@ -24,6 +23,7 @@ export class HorairePage implements OnInit {
   min:string;
   heures:string;
   tableauHoraire = [];
+  pdf;
 
   urlPlan = "https://www.tag.fr/ftp/fiche_horaires/fiche_horaires_2014/PLAN_";
 
@@ -62,19 +62,9 @@ export class HorairePage implements OnInit {
       }
     })
     this.urlPlan = this.urlPlan + this.api.ligne + ".pdf";
-    this.initModal();
+    this.pdf=this.urlPlan;
     
     
-  }
-
-  async initModal(){
-    const modal = await this.modalCtrl.create({
-      component:PdfPage,
-      componentProps: { 
-        pdf: this.urlPlan
-      }
-    });
-    return await modal.present();
   }
   
   async close(){
@@ -131,7 +121,9 @@ export class HorairePage implements OnInit {
 
   }
 
-
+  viewPdf(){
+    window.open(encodeURI(this.pdf),"_system","location=yes");
+}
   
 
 }

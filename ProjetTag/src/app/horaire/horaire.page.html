@@ -21,6 +21,11 @@
         <ion-searchbar placeholder="Rechercher un arrêt" [(ngModel)] = "search"></ion-searchbar>
         </ion-col>
         <ion-col width-80 style="text-align: right">
+          <ion-button (click)="viewPdf()">
+            PDF <p> </p> <ion-icon name="document-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col width-80 style="text-align: right">
         <ion-button class="transparent" (click)="changeSens()">
           <ion-icon slot="icon-only" name="swap-vertical-sharp" color = "dark"></ion-icon>
         </ion-button>

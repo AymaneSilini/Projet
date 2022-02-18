@@ -99,7 +99,12 @@ export class ArretDetailPage implements OnInit {
     });
   })
     })
-    
+    if(this.convertArret.length==0||this.convertArret==null){
+      document.getElementById("data1").innerHTML="<ion-item><ion-label>No Data</ion-label></ion-item>"
+    } 
+    if(this.convertArret2.length==0||this.convertArret2==null){
+      document.getElementById("data2").innerHTML="<ion-item><ion-label>No Data</ion-label></ion-item>"
+    } 
   
     
 }
