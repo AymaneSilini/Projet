@@ -179,6 +179,34 @@ export class CartePage implements OnInit {
       Leaflet.polyline([this.trajetTramE],
         {color: 'rgb(83,55,134)', weight: 8})
         .addTo(this.map);
+
+
+
+    var legend = Leaflet.control({position: 'bottomleft'});
+    legend.onAdd = function (map) {
+
+    var div = Leaflet.DomUtil.create('div', 'info legend');
+    let labels = ['<strong>Lignes</strong>'];
+    var categories = ['Ligne A','Ligne B','Ligne C','Ligne D', 'Ligne E'];
+    var couleur = ['rgb(51,118,184)', 'rgb(71,154,69)', 'rgb(194,0,120)', 'rgb(222,153,23)', 'rgb(83,55,134)'];
+
+    for (var i = 0; i < categories.length; i++) {
+
+            div.innerHTML += 
+            labels.push(
+              '<ion-label class="circle" style="color: white; background:' + (couleur[i]) + '">'+(categories[i] ? categories[i] : '+')+'</ion-label> ');
+        }
+        div.innerHTML = labels.join('<br>');
+    return div;
+    };
+    legend.addTo(this.map);
+
+
+
+
+
+
+
     }
 
 
@@ -253,5 +281,10 @@ options = {
   enableHighAccuracy: true, 
   maximumAge: 3600
 };
+
+
+centrer(){
+  this.map.setView([this.latitudePosition, this.longitudePosition], 16, { animation: true });      
+}
 
 }

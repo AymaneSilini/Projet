@@ -84,6 +84,7 @@ export class HorairePage implements OnInit {
 
   getHoraire(event){
     let x = event.srcElement.id;
+    document.getElementById("horaire"+x).innerHTML = " ";
     this.tableauHoraire = x.split(",");
     for (let k=0;k<(this.tableauHoraire).length;k++){
       var horaire = this.transformHoraire(this.tableauHoraire[k])
@@ -125,8 +126,6 @@ export class HorairePage implements OnInit {
     this.api.getInfo().subscribe(data=>{
       this.arret = data[0]["arrets"];    
     })    
-
-    
 
 }
 
