@@ -25,6 +25,10 @@ export class HorairePage implements OnInit {
   heures:string;
   tableauHoraire = [];
   sens:boolean;
+  pdfplan;
+  pdfhoraire;
+  urlHoraire = "https://www.tag.fr/ftp/fiche_horaires/fiche_horaires_2014/HORAIRES_";
+  urlPlan = "https://www.tag.fr/ftp/fiche_horaires/fiche_horaires_2014/PLAN_";
 
   constructor(private modalCtrl: ModalController, private api:ApiService) {
     this.urlBase = this.api.urlInfo;
@@ -59,12 +63,17 @@ export class HorairePage implements OnInit {
       }
     })
 
+    this.urlPlan = this.urlPlan + this.api.ligne + ".pdf";
+    this.urlHoraire = this.urlHoraire + this.api.ligne + ".pdf";
+    this.pdfplan=this.urlPlan;
+    this.pdfhoraire=this.urlHoraire;
+
+
+    
+
     
   }
 
-  ionViewDidEnter(){
-    
-  }
     
   async close(){
     const closeModal: string = 'Modal closed';
@@ -131,6 +140,15 @@ export class HorairePage implements OnInit {
 
 
   }
+
+  viewPdfplan(){
+    window.open(encodeURI(this.pdfplan),"_system","location=yes");
+}
+
+viewPdfpHoraire(){
+  window.open(encodeURI(this.pdfhoraire),"_system","location=yes");
+}
+
 
 
   
